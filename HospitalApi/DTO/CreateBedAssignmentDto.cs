@@ -1,13 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace HospitalApi.DTOs;
+namespace HospitalApi.DTO;
 
-public class BedAssignmentDto
+public class CreateBedAssignmentDto
 {
     [Required]
     public DateTime From { get; set; }
-
-    // opcjonalne - Example 2 nie zawiera "to"
+    
     public DateTime? To { get; set; }
 
     [Required]

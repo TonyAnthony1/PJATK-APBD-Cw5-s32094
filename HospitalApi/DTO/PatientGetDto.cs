@@ -1,4 +1,4 @@
-namespace HospitalApi.DTOs;
+namespace HospitalApi.DTO;
 
 public class PatientGetDto
 {
@@ -9,7 +9,7 @@ public class PatientGetDto
     public int Age { get; set; }
     public string Sex { get; set; } = null!;
     public List<AdmissionDto> Admissions { get; set; } = new();
-    public List<BedAssignmentDtos> BedAssignments { get; set; } = new();
+    public List<BedAssignmentDto> BedAssignments { get; set; } = new();
     
 }
 
@@ -21,7 +21,7 @@ public class AdmissionDto
     public WardDto Ward { get; set; } = null!;
 }
 
-public class BedAssignmentDtos
+public class BedAssignmentDto
 {
     public int Id { get; set; }
     public DateTime From { get; set; }
