@@ -1,6 +1,41 @@
-@HospitalApi_HostAddress = http://localhost:5151
+@HospitalApi_HostAddress = http://localhost:5000
 
-GET {{HospitalApi_HostAddress}}/weatherforecast/
+### Zad2: wszyscy pacjenci
+GET {{HospitalApi_HostAddress}}/api/patients
 Accept: application/json
 
-###
+### Zad2: filtrowanie po "an" (Jan/Anna/Joanna/Jankowski...)
+GET {{HospitalApi_HostAddress}}/api/patients?search=an
+Accept: application/json
+
+### Zad3: przypisanie lozka - Example 1 (z "to")
+POST {{HospitalApi_HostAddress}}/api/patients/90010112345/bedassignments
+Content-Type: application/json
+
+{
+  "from": "2026-05-20T14:00:00",
+  "to": "2026-05-30T10:00:00",
+  "bedType": "Standard",
+  "ward": "Kardiologia"
+}
+
+### Zad3: przypisanie lozka - Example 2 (bez "to")
+POST {{HospitalApi_HostAddress}}/api/patients/85050567890/bedassignments
+Content-Type: application/json
+
+{
+  "from": "2026-06-01T09:00:00",
+  "bedType": "Intensywna terapia",
+  "ward": "Chirurgia"
+}
+
+### Zad3: brak wolnego lozka -> 404
+POST {{HospitalApi_HostAddress}}/api/patients/90010112345/bedassignments
+Content-Type: application/json
+
+{
+  "from": "2026-05-01T09:00:00",
+  "to": "2026-05-05T09:00:00",
+  "bedType": "Standard",
+  "ward": "Kardiologia"
+}
